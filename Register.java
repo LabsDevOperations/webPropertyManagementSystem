@@ -13,7 +13,9 @@ public class Register
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/authorizationdb","root","");  
 			//Statement stmt=con.createStatement();  
 
-			// to develop... update isAuthorized in false for the other records(signout)
+			// update isAuthorized in false for the other records(signout)
+			String IQuerySignOut = "UPDATE `authorizationdb`.`tbuser` SET `isAuthorized` = 0";
+			boolean rsSo = con.createStatement().execute(IQuerySignOut);
 
 			String IQuery = "INSERT INTO `authorizationdb`.`tbuser`(`name`,`password`,`isAuthorized`) " + 
 							"VALUES('" + args[0] + "', '" + args[1] + "', 1)";
